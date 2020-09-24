@@ -50,15 +50,11 @@ export default () =>
                 .id('post-docs')
                 .icon(PostIcon)
                 .schemaType('post')
-                // When you open this list item, list out the documents
-                // of the type category"
                 .child(
                   S.documentList()
                     .id('post')
                     .title('Posts')
                     // Use a GROQ filter to get documents.
-                    // This filter checks for sampleProjects that has the
-                    // categoryId in its array of references
                     .filter('_type == "post" && (!defined(_lang) || _lang == $baseLang)')
                     .params({ baseLang: i18n.base })
                     .canHandleIntent((_name, params, _context) => {
